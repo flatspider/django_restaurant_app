@@ -1,0 +1,33 @@
+.check {
+  margin-left: 1em;
+}
+
+body {
+  min-height: 700px;
+}
+
+.check-out-btn {
+  position: fixed;
+  right: 7em;
+  bottom: 1em;
+}
+
+img {
+  width: 20%;
+  border: solid red 3px;
+}
+
+h1 {
+  font-size: 1em;
+}
+
+.mt-5 {
+  background-color: yellow;
+}
+
+.top-banner {
+  display: flex;
+  background-color: white;
+  text-align: center;
+  align-items: center;
+}

@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('foods/', include('foods.urls')),
     path('api_v1/', include('api.urls')),
+    path('', include('frontend.urls')),
 ]
