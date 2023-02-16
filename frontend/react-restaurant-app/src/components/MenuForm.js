@@ -1,6 +1,7 @@
 import MenuItem from "./MenuItem";
-import { nanoid } from "nanoid";
+import { useState, useEffect } from "react";
 
+/*
 const MENU_ITEMS = [
   {
     id: nanoid(),
@@ -59,14 +60,19 @@ const MENU_ITEMS = [
     category: "lunch",
   },
 ];
+*/
 
-// I do not want to add items to my LunchItems array.
-// I want to add them to a new check out array.
-// Look for a value to be passed in.
-function MenuForm({ placeCheckOutItemInCart, chooseMenu, removeItemFromCart }) {
-  const filteredArray = MENU_ITEMS.filter(
-    (item) => item.category === chooseMenu
-  );
+// I believe this is where my fetch request should go. This is where I determine the filter.
+
+function MenuForm({
+  placeCheckOutItemInCart,
+  chooseMenu,
+  removeItemFromCart,
+  foods,
+}) {
+  // Make a fetch request and store it in state to display.
+
+  const filteredArray = foods.filter((item) => item.category === chooseMenu);
 
   // Above function filters the full menu-items array according to the item.category that was selected.
 

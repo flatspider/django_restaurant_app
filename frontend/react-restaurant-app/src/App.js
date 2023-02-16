@@ -1,14 +1,32 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MenuForm from "./components/MenuForm";
 import CheckOut from "./components/CheckOut";
 
 function App() {
-  // Establish what initial state is.
-  // Should be lunch.
   const [checkOutItems, setCheckOutItems] = useState("");
-
   const [menuSelection, setMenuSelection] = useState("a");
+
+  const [foods, setFoods] = useState([]);
+
+  useEffect(() => {
+    const getFoods = async () => {
+      // What is the correct URL to use here?
+      // Visiting the 8000/api_v1/foods/ url shows the list of food items.
+      const response = await fetch("/api_v1/foods/");
+
+      if (!response.ok) {
+        console.log("error");
+        throw new Error("Network request was not OK");
+      }
+
+      const data = await response.json();
+      console.log("HELLOW");
+      console.log({ data });
+      setFoods(data);
+    };
+    getFoods();
+  }, []);
 
   const placeCheckOutItemInCart = ({ items }) => {
     alert(items.description + " added to your cart.");
@@ -36,12 +54,12 @@ function App() {
   return (
     <div className="App container mt-5">
       <header className="App-header">
-        <div class="top-banner">
+        <div className="top-banner">
           <img src="https://static.wixstatic.com/media/a895db_d25ab21086c64ec89c658622a8248f2e~mv2.jpg/v1/fill/w_402,h_478,al_c,lg_1,q_80,enc_auto/brickstreetcafelogo.jpg" />
           <h1>
             Kitchen is open for lunch Tuesday - Saturday from 11am - 4pm
             ----------------------------- Cake Pick-Ups and Slices are available
-            Tuesday - Saturday from 10am - 6:30pm
+            Tuesday - Saturday from 10am - 6:30pm TEST
           </h1>
         </div>
         <button
@@ -67,12 +85,14 @@ function App() {
         <MenuForm
           placeCheckOutItemInCart={placeCheckOutItemInCart}
           chooseMenu={"lunch"}
+          foods={foods}
         />
       )}
       {menuSelection === "b" && (
         <MenuForm
           placeCheckOutItemInCart={placeCheckOutItemInCart}
           chooseMenu={"dessert"}
+          foods={foods}
         />
       )}
       {menuSelection === "c" && (
