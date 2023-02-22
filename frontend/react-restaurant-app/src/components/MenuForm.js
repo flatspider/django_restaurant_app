@@ -64,6 +64,8 @@ const MENU_ITEMS = [
 
 // I believe this is where my fetch request should go. This is where I determine the filter.
 
+// Create the get request here. Use async, await, etc...and then store that value in state.
+
 function MenuForm({
   placeCheckOutItemInCart,
   chooseMenu,

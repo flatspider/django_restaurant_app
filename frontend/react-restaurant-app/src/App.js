@@ -16,13 +16,11 @@ function App() {
       const response = await fetch("/api_v1/foods/");
 
       if (!response.ok) {
-        console.log("error");
         throw new Error("Network request was not OK");
       }
 
       const data = await response.json();
-      console.log("HELLOW");
-      console.log({ data });
+
       setFoods(data);
     };
     getFoods();
@@ -33,7 +31,7 @@ function App() {
     const checkOutCopy = [...checkOutItems]; // This should be adding to an array.
     checkOutCopy.push(items);
     setCheckOutItems(checkOutCopy); // Not updating the state value.
-    console.log(checkOutItems); // ID values are being added to state. I want the entire item added.
+    // ID values are being added to state. I want the entire item added.
   };
 
   const removeItemFromCart = ({ items }) => {
@@ -45,10 +43,10 @@ function App() {
     let deleteIndex = checkOutCopy1.findIndex(
       (item) => item.description === items.description
     );
-    console.log(deleteIndex);
+
     checkOutCopy1.splice(deleteIndex, 1);
     setCheckOutItems(checkOutCopy1); // Not updating the state value.
-    console.log(checkOutItems); // ID values are being added to state. I want the entire item added.
+    // ID values are being added to state. I want the entire item added.
   };
 
   return (
